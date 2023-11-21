@@ -1,0 +1,56 @@
+.content, h1 {
+  text-align: -webkit-center;
+}
+
+.content {
+  margin: 40px;
+  margin-left: 250px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+.cell {
+  border: 2px solid black;
+  background: darkkhaki;
+}
+
+.right {
+  border-right: 2px solid black;
+}
+
+.top {
+  border-top: 2px solid black;
+}
+
+.row {
+  width: 150px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+button {
+    height: 40px;
+    width: 100px;
+    background-color: darkred;
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+    font-size: 1em;
+    margin: 10px 20px;
+}
+
+.vector {
+    margin-left: -150px;
+}

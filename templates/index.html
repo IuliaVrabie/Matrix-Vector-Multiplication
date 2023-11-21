@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='style.css')}}">
+
+</head>
+<body>
+  <h1>Matrix-Vector Multiplication - Linear Array</h1>
+  <div class="buttons">
+    <div><a href="{{ url_for('next_step') }}"><button>Next step</button></a></div>
+    <div><a href="{{ url_for('clear') }}"><button>Restart</button></a></div>
+  </div>
+  <div class="content">
+    {% for i in range(0, cells|length) %}
+    <table>
+      <tr>
+        <td></td>
+        <td class="right"></td>
+        <td>{{cells[i]['v_in']}}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{{cells[i]['m_in']}}</td>
+        <td rowspan="2" colspan="2" class="cell">P{{ loop.index }} <br> {{cells[i]['c']}}
+        </td>
+<!--          &#9825;-->
+        <td>{{cells[i]['m_in']}}</td>
+        <td class="row">
+          &#8592;
+          {% for elem in matrix[i] %}
+          {{elem}}
+          {% endfor %}
+        </td>
+      </tr>
+      <tr>
+        <td class="top"></td>
+        <td class="top"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="right"></td>
+        <td>{{cells[i]['v_in']}}</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    {% endfor %}
+    <div class="vector">
+      <p>&#8593;</p>
+    {% for i in range(0, (vector|length)-2) %}
+      <p>{{vector[i]}}</p>
+    {% endfor %}</div>
+
+  </div>
+
+</body>
+</html>
