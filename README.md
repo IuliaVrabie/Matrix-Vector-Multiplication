@@ -1,10 +1,8 @@
-# Matrix-Matrix Multiplication
+## Matrix-Vector Multiplication 
 
-## Overview
+The matrix-vector multiplication logic in this application is implemented using a linear array approach. The linear array represents a sequence of cells, each responsible for a specific computation step. The algorithm follows these key steps:
 
-This Python implementation uses Flask to create a web-based simulation for matrix-matrix multiplication using a linear array. The simulation visualizes the computation steps involved in multiplying two matrices, `matrix1` and `matrix2`, and displays intermediate values during each step. The linear array includes delay elements to illustrate the flow of data through the system.
-
-## Prerequisites
+### Prerequisites
 
 Before running the program, ensure that you have Python and Flask installed. You can install Flask using the following command:
 
@@ -12,53 +10,63 @@ Before running the program, ensure that you have Python and Flask installed. You
 pip install Flask
 ```
 
-## How to Run
+### How to run
 
-1. Run the Flask application:
-
-```bash
-python app.py
-```
-
-2. Open your web browser and navigate to [http://127.0.0.1:5000/](http://127.0.0.1:5000/) to interact with the matrix-multiplication simulation.
-
-## Detailed Logic
-
-### 1. Matrix Initialization and Transformation
-
-- Two matrices, `matrix1` and `matrix2`, are initialized in the Python code.
-- The `transpose` function is used to transpose matrices as needed for the linear array computation.
-- The `add_delays` function adds delay elements to the matrices to simulate a linear array with delays.
-
-### 2. Web Interface
-
-- The Flask application has two routes: `'/'` and `'/next_step'`.
-- The `'/'` route renders the initial state of the matrices and linear array on the web page.
-- The `'/next_step'` route advances the simulation by one step and updates the web page with the new state.
-
-### 3. Linear Array Computation
-
-- The linear array computation is simulated using a 2D array of cells (`cells`).
-- Each cell in the array contains:
-  - `c`: The result of the multiplication.
-  - `m1_in`, `m1_out`: Input and output values from `matrix1`.
-  - `m2_in`, `m2_out`: Input and output values from `matrix2`.
-
-### 4. Matrix Propagation and Computation
-
-- The `'next_step'` route propagates input values through the linear array.
-- For each cell, the input values (`m1_in` and `m2_in`) are calculated based on the previous cell's output.
-- The algorithm updates the cell's state, including the result of the multiplication (`c`).
-
-### 5. Web Page Display
-
-- The HTML template (`index.html`) uses Jinja2 templating to display the matrix values and cell states.
-- The template includes a grid that represents the linear array and updates dynamically with each step.
-- CSS styles (`style.css`) enhance the visual representation of the matrices and linear array.
-
-## Acknowledgments
-
-This simulation serves as an educational tool for understanding the steps involved in matrix-matrix multiplication using a linear array. It provides a visual representation of the computation process and can be used for learning purposes or as a reference for implementing similar simulations.
+1. Run the Flask application by executing the `app.py` file.
+    ```bash
+    python app.py
+    ```
+2. Open a web browser and go to [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
 
 
-![First page](https://github.com/IuliaVrabie/Matrix-Vector-Multiplication/blob/2f27f7ae5d6eef3daa9579c65b0e43e0d30b664c/mmm.png)
+### Functionality
+
+1. **Initialization:**
+   - The input matrix, vector, and a linear array of cells are initialized.
+   - Delays (represented by '*' symbols) can be added to the input matrix for visualization purposes.
+
+2. **Propagation of Input:**
+   - The algorithm starts by propagating the input values through the linear array.
+   - Each cell in the linear array receives input from the corresponding element in the matrix and the neighboring cells.
+   - The input values are updated in the cells for visualization.
+
+3. **Calculation:**
+   - The algorithm iterates through the linear array to perform calculations.
+   - Each cell computes the product of its input matrix value and the corresponding vector value.
+   - The intermediate result is accumulated in the cell.
+
+4. **Updating Output:**
+   - The algorithm updates the output values of the cells, representing the result of the multiplication process.
+   - The output values are then displayed on the web page.
+
+5. **Iteration:**
+   - The user can step through the algorithm by clicking the "Next step" button.
+   - The iteration continues until the entire matrix-vector multiplication is completed.
+
+6. **Restart:**
+   - Users can restart the process by clicking the "Restart" button, clearing the session and allowing for a fresh start.
+
+### Cell Structure
+
+Each cell in the linear array contains the following attributes:
+
+- `m_in`: Input value from the matrix.
+- `m_out`: Output value to be passed to the next cell.
+- `v_in`: Input value from the vector or the previous cell's output.
+- `v_out`: Output value to be passed to the next cell.
+- `c`: Accumulated result of the multiplication process.
+
+### Visualization
+
+The web interface displays the matrix, vector, and the linear array of cells. The HTML template (`index.html`) uses Jinja templating to dynamically render the values and intermediate calculations. The user can observe how the algorithm processes the input and produces the final result.
+
+### Interaction
+
+- Clicking the "Next step" button iterates through the algorithm, providing a step-by-step visualization.
+- The "Restart" button allows users to clear the session and start the matrix-vector multiplication process again.
+
+### Customization
+
+Users can experiment with different input matrices and vectors by modifying the `matrix` and `vector` variables in the `app.py` file. Additionally, the code can be extended to handle larger matrices or different multiplication strategies.
+
+![First page](https://github.com/IuliaVrabie/Matrix-Vector-Multiplication/blob/2787871f4cf65de727565644fb6f20dce9583d7e/mvm.png)
